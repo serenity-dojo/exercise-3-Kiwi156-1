@@ -22,4 +22,8 @@ public class CoffeeShop {
                 .filter( order -> order.getCustomer().equals(customer))
                 .findFirst();
     }
+
+    public Receipt getReceiptFor(Customer customer) {
+        return new Receipt(0, 0,0 );
+    }
 }

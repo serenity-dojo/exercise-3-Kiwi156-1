@@ -1,4 +1,4 @@
-package caffeinateme.steps;
+package caffeinateme.model;
 
 public class ProductPrice {
 
