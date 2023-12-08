@@ -4,11 +4,15 @@ package caffeinateme.steps;
 import caffeinateme.model.*;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.Map;
+
+
 
 public class AskForAReceiptStepDefinition {
 
@@ -51,18 +55,15 @@ public class AskForAReceiptStepDefinition {
             receipt = coffeeShop.getReceiptFor(cathy);
         }
 
-        @Then("the receipt should contain the line items:")
-        public void the_receipt_should_contain_the_line_items(io.cucumber.datatable.DataTable dataTable) {
-            // Write code here that turns the phrase above into concrete actions
-            // For automatic transformation, change DataTable to one of
-            // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-            // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-            // Double, Byte, Short, Long, BigInteger or BigDecimal.
-            //
-            // For other transformations you can register a DataTableType.
-            throw new io.cucumber.java.PendingException();
-        }
+    @Then("^she should receive a receipt totalling:$")
+    public void sheShouldReceiveAReceiptTotalling(List<Map<String, String>> receiptTotals) {
+        Double serviceFee = Double.parseDouble(receiptTotals.get(0).get("Service Fee"));
+        Double subtotal = Double.parseDouble(receiptTotals.get(0).get("Subtotal"));
+        Double total = Double.parseDouble(receiptTotals.get(0).get("Total"));
 
-  */
+        assertThat(receipt.getServiceFee()).isEqualTo(serviceFee);
+        assertThat(receipt.getSubtotal()).isEqualTo(subtotal);
+        assertThat(receipt.getTotal()).isEqualTo(total);
     }
+
 }

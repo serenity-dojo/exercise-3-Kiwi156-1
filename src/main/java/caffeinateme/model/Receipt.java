@@ -1,17 +1,19 @@
 package caffeinateme.model;
 
+import java.util.List;
+
 public class Receipt {
 
     private double subtotal;
 
-    private double Total;
+    private double total;
 
-    private double Service_Fee;
+    private double serviceFee;
 
-    public Receipt(double subtotal, double total, double service_Fee) {
+    public Receipt(double subtotal, double total, double serviceFee, List<ReceiptLineItem> lineItems) {
         this.subtotal = subtotal;
-        Total = total;
-        Service_Fee = service_Fee;
+        this.total = total;
+        this.serviceFee = serviceFee;
     }
 
     public double getSubtotal() {
@@ -19,10 +21,18 @@ public class Receipt {
     }
 
     public double getTotal() {
-        return Total;
+        return total;
     }
 
-    public double getService_Fee() {
-        return Service_Fee;
+    public double getServiceFee() {
+        return serviceFee;
+    }
+    @Override
+    public String toString() {
+        return "Receipt{" +
+                "subtotal=" + subtotal +
+                ", total=" + total +
+                ", serviceFee=" + serviceFee +
+                '}';
     }
 }
