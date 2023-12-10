@@ -15,4 +15,4 @@ Feature: Ask for a receipt
     When she asks for a receipt
     Then she should receive a receipt totalling:
       | Subtotal | Service Fee | Total |
-      | 4.75     | 0.24        | 4.99  |
+      | 4.75     | 0.24      | 4.99  |

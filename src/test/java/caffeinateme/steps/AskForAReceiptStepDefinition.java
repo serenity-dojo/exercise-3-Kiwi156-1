@@ -57,6 +57,7 @@ public class AskForAReceiptStepDefinition {
 
     @Then("^she should receive a receipt totalling:$")
     public void sheShouldReceiveAReceiptTotalling(List<Map<String, String>> receiptTotals) {
+        System.out.println(receiptTotals);
         Double serviceFee = Double.parseDouble(receiptTotals.get(0).get("Service Fee"));
         Double subtotal = Double.parseDouble(receiptTotals.get(0).get("Subtotal"));
         Double total = Double.parseDouble(receiptTotals.get(0).get("Total"));
