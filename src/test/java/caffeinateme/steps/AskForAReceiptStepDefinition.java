@@ -26,6 +26,7 @@ public class AskForAReceiptStepDefinition {
     @Given("^the following prices:$")
     public void theFollowingPrices(List<ProductPrice> productPrices) throws Throwable {
         productCatalog.addProductsWithPrices(productPrices);
+        coffeeShop.setProductCatalog(productCatalog);
     }
 
     @DataTableType
@@ -38,6 +39,7 @@ public class AskForAReceiptStepDefinition {
         for (OrderItem item : orders) {
             Order order =
                     Order.of(item.getQuantity(), item.getProduct()).forCustomer(cathy);
+        coffeeShop.placeOrder(order);
         }
 
     }

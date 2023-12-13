@@ -20,13 +20,14 @@ public class Receipt {
         return subtotal;
     }
 
-    public double getTotal() {
-        return total;
-    }
+    public double getTotal() { return total;}
 
     public double getServiceFee() {
         return serviceFee;
     }
+
+
+
     @Override
     public String toString() {
         return "Receipt{" +

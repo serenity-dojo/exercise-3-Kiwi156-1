@@ -7,14 +7,20 @@ import java.util.stream.Collectors;
 public class CoffeeShop {
 
     private Queue<Order> orders = new LinkedList<>();
-
+    private ProductCatalog productCatalog;
     public void placeOrder(Order order, int distanceInMetres) {
         if (distanceInMetres <= 200) {
             order = order.withStatus(OrderStatus.Urgent);
         }
         orders.add(order);
+
     }
 
+    public void setProductCatalog(ProductCatalog productCatalog) {
+        this.productCatalog = productCatalog;
+    }
+
+    public void placeOrder(Order order){orders.add(order);}
     public List<Order> getPendingOrders() {
         return new ArrayList<>(orders);
     }
@@ -41,8 +47,8 @@ public class CoffeeShop {
         double serviceFee = subTotal * 5 / 100;
         double total = subTotal + serviceFee;
         return new Receipt(roundedTo2DecimalPlaces(subTotal),
-                roundedTo2DecimalPlaces(serviceFee),
                 roundedTo2DecimalPlaces(total),
+                roundedTo2DecimalPlaces(serviceFee),
                 lineItems);
     }
 
@@ -52,7 +58,6 @@ public class CoffeeShop {
     }
 
     private double subtotalFor(Order order) {
-        ProductCatalog productCatalog = new ProductCatalog();
         return productCatalog.priceOf(order.getProduct()) * order.getQuantity();
     }
 }
